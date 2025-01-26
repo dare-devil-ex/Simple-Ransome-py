@@ -11,3 +11,11 @@ for dirpath, dirnames, filenames in os.walk(root_dir):
     for filename in filenames:
         full_path = os.path.join(dirpath, filename)
         
+        with open(full_path, "rb") as f:
+            unpackedFile = f.read()
+            decData = wkaie.decrypt(unpackedFile)
+            
+        with open(full_path, "wb") as f:
+            f.write(decData)
+            
+print("Your files decrypted successfully :]")
